@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        *{
+            font-family: 'Roboto', sans-serif;
+        }
+        .container{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50% , -50%);
+        }
+        .item{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Tarefas</h1>
+        <form>
+            <input type="text" id="tarefa" placeholder="Nome da tarefa">
+            <button type="submit" id="btn-add">Adicionar+</button>
+        </form>
+        <ul>
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        
+        $('form').on('submit', function(e){
+            e.preventDefault();
+            const novaTarefa= $('#tarefa').val();
+            const lista = $(`<li class="item"></li>`)
+            lista.text(novaTarefa)
+            lista.appendTo('ul')
+        })
+        $('ul').on('click', '.item', function() {
+            $(this).css('text-decoration', 'line-through');
+        });
+    })
+    </script>
+</body>
+</html>
